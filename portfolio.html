@@ -1,0 +1,1599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bandla Harikrishna - Full Stack Developer Portfolio</title>
+    <meta name="description" content="Full Stack Developer with 3+ years experience in React.js, Vue.js, Next.js, and modern web technologies. Building scalable, user-friendly applications.">
+    <meta name="author" content="Bandla Harikrishna">
+    <meta name="keywords" content="Full Stack Developer, React.js, Vue.js, Next.js, JavaScript, Web Developer, Software Engineer">
+    
+    <meta property="og:title" content="Bandla Harikrishna - Full Stack Developer Portfolio">
+    <meta property="og:description" content="Full Stack Developer with 3+ years experience in React.js, Vue.js, Next.js, and modern web technologies.">
+    <meta property="og:type" content="website">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            /* Dark Theme Foundation */
+            --background: 220 27% 8%;
+            --foreground: 220 15% 95%;
+
+            /* Glass/Card System */
+            --card: 220 25% 12%;
+            --card-foreground: 220 15% 95%;
+            --glass: 220 25% 15%;
+            --glass-border: 220 35% 25%;
+
+            /* Brand Colors - Cyan/Purple Gradient System */
+            --primary: 192 84% 60%;
+            --primary-foreground: 220 27% 8%;
+            --primary-glow: 192 90% 70%;
+
+            --secondary: 270 90% 65%;
+            --secondary-foreground: 220 15% 95%;
+            --secondary-glow: 270 95% 75%;
+
+            /* Accent System */
+            --accent: 160 84% 60%;
+            --accent-foreground: 220 27% 8%;
+            --accent-glow: 160 90% 70%;
+
+            /* Neutral System */
+            --muted: 220 25% 20%;
+            --muted-foreground: 220 15% 70%;
+
+            /* Interactive States */
+            --border: 220 35% 25%;
+            --input: 220 25% 18%;
+            --ring: 192 84% 60%;
+
+            /* Gradients */
+            --gradient-primary: linear-gradient(135deg, hsl(192 84% 60%) 0%, hsl(270 90% 65%) 100%);
+            --gradient-secondary: linear-gradient(45deg, hsl(160 84% 60%) 0%, hsl(192 84% 60%) 100%);
+            --gradient-accent: linear-gradient(90deg, hsl(270 90% 65%) 0%, hsl(192 84% 60%) 50%, hsl(160 84% 60%) 100%);
+            --gradient-dark: linear-gradient(180deg, hsl(220 27% 8%) 0%, hsl(220 30% 12%) 100%);
+
+            /* Shadows & Glows */
+            --shadow-glow: 0 0 40px hsl(192 84% 60% / 0.3);
+            --shadow-primary: 0 10px 40px -10px hsl(192 84% 60% / 0.4);
+            --shadow-glass: 0 8px 32px 0 hsl(220 25% 5% / 0.4);
+            --shadow-card: 0 4px 20px 0 hsl(220 25% 5% / 0.3);
+
+            /* Animation Timing */
+            --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+            --radius: 16px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--gradient-dark);
+            color: hsl(var(--foreground));
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: hsl(var(--muted));
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gradient-accent);
+        }
+
+        /* Selection */
+        ::selection {
+            background: hsl(var(--primary) / 0.3);
+            color: hsl(var(--foreground));
+        }
+
+        /* Utility Classes */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .glass-card {
+            background: hsl(var(--glass) / 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid hsl(var(--glass-border) / 0.3);
+            box-shadow: var(--shadow-glass);
+            transition: var(--transition-smooth);
+        }
+
+        .glass-card:hover {
+            background: hsl(var(--glass) / 0.8);
+            border-color: hsl(var(--primary) / 0.4);
+            box-shadow: var(--shadow-primary);
+            transform: translateY(-4px);
+        }
+
+        .gradient-text {
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% 200%;
+            animation: gradient-shift 3s ease-in-out infinite;
+        }
+
+        .glow {
+            box-shadow: var(--shadow-glow);
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .skill-badge {
+            background: hsl(var(--muted) / 0.5);
+            border: 1px solid hsl(var(--border));
+            backdrop-filter: blur(10px);
+            transition: var(--transition-smooth);
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            font-size: 1rem;
+            font-weight: 500;
+            display: inline-block;
+            margin: 0.25rem;
+            text-decoration: none;
+            color: hsl(var(--foreground));
+        }
+
+        .skill-badge:hover {
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: var(--shadow-primary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            border: none;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .btn-outline {
+            border: 2px solid hsl(var(--primary) / 0.3);
+            color: hsl(var(--primary));
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: hsl(var(--primary) / 0.1);
+            border-color: hsl(var(--primary) / 0.5);
+            transform: scale(1.05);
+        }
+
+        .hero-pattern {
+            background-image: 
+                radial-gradient(circle at 20% 50%, hsl(192 84% 60% / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, hsl(270 90% 65% / 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, hsl(160 84% 60% / 0.1) 0%, transparent 50%);
+        }
+
+        .text-display {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .text-hero {
+            font-size: clamp(1.25rem, 4vw, 1.5rem);
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+        }
+
+        /* Animations */
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+            }
+            50% { 
+                box-shadow: 0 0 40px hsl(var(--primary) / 0.6);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-slide-in-left {
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: var(--transition-smooth);
+        }
+
+        .nav.scrolled {
+            background: hsl(var(--glass) / 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid hsl(var(--glass-border) / 0.3);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: hsl(var(--foreground));
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: hsl(var(--muted-foreground));
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: hsl(var(--primary));
+        }
+
+        .nav-links a.active {
+            color: hsl(var(--primary));
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: hsl(var(--foreground));
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: hsl(var(--muted-foreground));
+            max-width: 48rem;
+            margin: 0 auto;
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 2rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--gradient-primary);
+            opacity: 0.5;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-left: 5rem;
+            margin-bottom: 3rem;
+            padding-left: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .floating-element.primary {
+            background: var(--gradient-primary);
+        }
+
+        .floating-element.secondary {
+            background: var(--gradient-secondary);
+        }
+
+        .floating-element.accent {
+            background: var(--gradient-accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: hsl(var(--glass) / 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 2rem;
+                border-bottom: 1px solid hsl(var(--glass-border) / 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-toggle {
+                display: block;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .timeline::before {
+                left: 1rem;
+            }
+
+            .timeline-item {
+                margin-left: 3rem;
+            }
+
+            .timeline-item::before {
+                left: -1.5rem;
+            }
+        }
+
+        /* Contact Form */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 1rem;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .contact-method:hover {
+            background: hsl(var(--muted) / 0.2);
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: var(--gradient-primary);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            padding: 0.75rem;
+            border-radius: 0.75rem;
+            transition: var(--transition-smooth);
+            text-decoration: none;
+            color: hsl(var(--muted-foreground));
+        }
+
+        .social-link:hover {
+            color: hsl(var(--primary));
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <a href="#home" class="nav-logo gradient-text">BH</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+                <button class="nav-toggle" id="navToggle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="section" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden;">
+        <!-- Background -->
+        <div style="position: absolute; inset: 0; z-index: 0;">
+            <div class="hero-pattern" style="position: absolute; inset: 0;"></div>
+            <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, hsl(var(--background) / 0.5), hsl(var(--background)));"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="container" style="text-align: center; position: relative; z-index: 10;">
+            <div class="animate-fade-in-up">
+                <!-- Greeting -->
+                <div class="glass-card animate-pulse-glow" style="display: inline-flex; align-items: center; padding: 0.5rem 1rem; border-radius: 2rem; margin-bottom: 2rem;">
+                    <span style="width: 0.5rem; height: 0.5rem; background: hsl(var(--accent)); border-radius: 50%; margin-right: 0.75rem; animation: pulse 2s infinite;"></span>
+                    <span class="mono" style="font-size: 0.875rem; font-weight: 500;">Available for new opportunities</span>
+                </div>
+
+                <!-- Name & Title -->
+                <h1 class="text-display gradient-text animate-slide-in-left" style="margin-bottom: 1.5rem;">
+                    Bandla Harikrishna
+                </h1>
+                
+                <p style="font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; color: hsl(var(--foreground) / 0.9); margin-bottom: 1rem;">
+                    Full Stack Developer
+                </p>
+
+                <!-- Tagline -->
+                <p class="text-hero" style="color: hsl(var(--muted-foreground)); max-width: 48rem; margin: 0 auto 3rem; line-height: 1.6;">
+                    Building scalable, user-friendly, and modern web applications with
+                    <span style="color: hsl(var(--primary)); font-weight: 600;">3+ years</span> of experience in
+                    <span style="color: hsl(var(--secondary)); font-weight: 600;">React.js, Vue.js, Next.js</span>, and cutting-edge technologies.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div style="display: flex; flex-direction: column; gap: 1rem; justify-content: center; align-items: center; margin-bottom: 4rem;">
+                    <a href="#projects" class="btn btn-primary glow" style="font-size: 1.125rem; padding: 1.5rem 2rem; border-radius: 1rem;">
+                        View My Work
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                            <polyline points="19,12 12,19 5,12"></polyline>
+                        </svg>
+                    </a>
+                    
+                    <a href="#contact" class="btn btn-outline" style="font-size: 1.125rem; padding: 1.5rem 2rem; border-radius: 1rem;">
+                        Get In Touch
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m22 2-7 20-4-9-9-4Z"></path>
+                            <path d="M22 2 11 13"></path>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Social Links -->
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/bandla-harikrishna" target="_blank" rel="noopener noreferrer" class="social-link glass-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m8 6 4-4 4 4"/>
+                            <path d="m8 6v12"/>
+                            <path d="m8 18 4 4 4-4"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="mailto:haribandla246@gmail.com" class="social-link glass-card">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="m22 2-7 20-4-9-9-4Z"/>
+                            <path d="M22 2 11 13"/>
+                        </svg>
+                    </a>
+                    
+                    <a href="tel:+919490946401" class="social-link glass-card">
+                        <span class="mono" style="font-size: 0.875rem; font-weight: 700;">+91</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Floating Elements -->
+            <div class="floating-element primary float" style="top: 5rem; left: 2.5rem; width: 5rem; height: 5rem; animation-delay: 1s;"></div>
+            <div class="floating-element secondary float" style="bottom: 10rem; right: 2.5rem; width: 4rem; height: 4rem; animation-delay: 2s;"></div>
+            <div class="floating-element accent float" style="top: 50%; left: 1.25rem; width: 3rem; height: 3rem; animation-delay: 3s;"></div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div style="position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+            <div style="width: 1.5rem; height: 2.5rem; border: 2px solid hsl(var(--primary) / 0.3); border-radius: 1.25rem; display: flex; justify-content: center;">
+                <div style="width: 0.25rem; height: 0.75rem; background: hsl(var(--primary)); border-radius: 0.125rem; margin-top: 0.5rem; animation: pulse 2s infinite;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">About Me</h2>
+                <p class="section-subtitle">
+                    Passionate UI Developer with expertise in modern frontend technologies and a knack for creating exceptional user experiences.
+                </p>
+            </div>
+
+            <div class="grid grid-2" style="align-items: center;">
+                <!-- Bio Content -->
+                <div class="animate-slide-in-left">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; color: hsl(var(--primary));">My Journey</h3>
+                        <div style="color: hsl(var(--muted-foreground)); line-height: 1.7;">
+                            <p style="margin-bottom: 1rem;">
+                                As a <span style="color: hsl(var(--foreground)); font-weight: 600;">UI Developer</span> with strong expertise in creating interactive and high-performing web applications, I specialize in modern frontend frameworks and technologies.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                I'm proficient in <span style="color: hsl(var(--primary)); font-weight: 600;">JavaScript, HTML, CSS, Bootstrap</span> with strong expertise in modern frameworks such as <span style="color: hsl(var(--secondary)); font-weight: 600;">Vue.js, Next.js and React.js</span>.
+                            </p>
+                            <p style="margin-bottom: 1rem;">
+                                My experience includes building <span style="color: hsl(var(--accent)); font-weight: 600;">role-based applications</span> with complex approval workflows and seamless API integrations. I'm skilled in state management using <span style="color: hsl(var(--primary)); font-weight: 600;">Vuex and Redux</span>, and in writing reusable, modular UI components.
+                            </p>
+                            <p>
+                                I bring strong problem-solving and debugging abilities with a focus on delivering maintainable and scalable solutions that make a real impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlights Grid -->
+                <div class="grid grid-2 animate-fade-in-up">
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; transition: var(--transition-smooth);">
+                        <div style="width: 3rem; height: 3rem; background: var(--gradient-primary); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem; color: hsl(var(--foreground));">3+ Years Experience</h4>
+                        <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; line-height: 1.6;">Building interactive and high-performing web applications</p>
+                    </div>
+
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; transition: var(--transition-smooth);">
+                        <div style="width: 3rem; height: 3rem; background: var(--gradient-primary); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="m9 12 2 2 4-4"></path>
+                                <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path>
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            </svg>
+                        </div>
+                        <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem; color: hsl(var(--foreground));">Microsoft Certified</h4>
+                        <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; line-height: 1.6;">Azure Fundamentals (AZ-900) and AI Fundamentals (AI-900)</p>
+                    </div>
+
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; transition: var(--transition-smooth);">
+                        <div style="width: 3rem; height: 3rem; background: var(--gradient-primary); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="m22 21-3-3m0 0a8 8 0 1 1-11.31-11.31 8 8 0 0 1 11.31 11.31z"></path>
+                            </svg>
+                        </div>
+                        <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem; color: hsl(var(--foreground));">Team Player</h4>
+                        <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; line-height: 1.6;">Effective communicator and proactive collaborator</p>
+                    </div>
+
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; transition: var(--transition-smooth);">
+                        <div style="width: 3rem; height: 3rem; background: var(--gradient-primary); border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                            </svg>
+                        </div>
+                        <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem; color: hsl(var(--foreground));">Problem Solver</h4>
+                        <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; line-height: 1.6;">Strong debugging abilities with focus on scalable solutions</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tech Focus -->
+            <div style="margin-top: 4rem; text-align: center;">
+                <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem; max-width: 64rem; margin: 0 auto;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;" class="gradient-text">Technical Focus</h3>
+                    <p style="color: hsl(var(--muted-foreground)); line-height: 1.7;">
+                        I have hands-on experience with <span style="color: hsl(var(--primary)); font-weight: 600;">manual testing, unit testing</span>, and ensuring UI/UX consistency across features. Adept at using <span style="color: hsl(var(--secondary)); font-weight: 600;">Git for version control</span> and <span style="color: hsl(var(--accent)); font-weight: 600;">Jira for task tracking</span> and agile project management.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element secondary float" style="top: 2.5rem; right: 2.5rem; width: 8rem; height: 8rem; animation-delay: 0s;"></div>
+        <div class="floating-element accent float" style="bottom: 5rem; left: 2.5rem; width: 6rem; height: 6rem; animation-delay: 2s;"></div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Skills & Expertise</h2>
+                <p class="section-subtitle">
+                    A comprehensive toolkit of modern technologies and frameworks for building exceptional web applications.
+                </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+                <!-- Primary Skills -->
+                <div class="glass-card animate-fade-in-up" style="padding: 2rem; border-radius: 1.5rem;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">
+                        <span class="gradient-text">Primary Skills</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                        <span class="skill-badge">Next.js</span>
+                        <span class="skill-badge">React.js</span>
+                        <span class="skill-badge">Vue.js</span>
+                        <span class="skill-badge">Bootstrap</span>
+                        <span class="skill-badge">JavaScript</span>
+                        <span class="skill-badge">HTML</span>
+                        <span class="skill-badge">CSS</span>
+                        <span class="skill-badge">Git</span>
+                        <span class="skill-badge">Jira</span>
+                    </div>
+                </div>
+
+                <!-- Secondary Skills -->
+                <div class="glass-card animate-fade-in-up" style="padding: 2rem; border-radius: 1.5rem;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">
+                        <span class="gradient-text">Secondary Skills</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">Node.js</span>
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">Express</span>
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">MongoDB</span>
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">Postman</span>
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">Python</span>
+                        <span class="skill-badge" style="border: 2px solid hsl(var(--border));">Java</span>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="glass-card animate-fade-in-up" style="padding: 2rem; border-radius: 1.5rem;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 2rem; text-align: center;">
+                        <span class="gradient-text">Certifications</span>
+                    </h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+                        <span class="skill-badge glow" style="background: var(--gradient-primary); color: hsl(var(--primary-foreground)); padding: 1rem 2rem; font-weight: 600;">Microsoft Azure Fundamentals (AZ-900)</span>
+                        <span class="skill-badge glow" style="background: var(--gradient-primary); color: hsl(var(--primary-foreground)); padding: 1rem 2rem; font-weight: 600;">Microsoft AI Fundamentals (AI-900)</span>
+                    </div>
+                </div>
+
+                <!-- Field of Interest -->
+                <div style="text-align: center;">
+                    <div class="glass-card animate-pulse-glow" style="display: inline-flex; align-items: center; padding: 1rem 2rem; border-radius: 2rem;">
+                        <span style="font-size: 1.125rem; font-weight: 600;" class="gradient-text">
+                            Field of Interest: Full Stack Development
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element primary float" style="top: 8rem; left: 1.25rem; width: 5rem; height: 5rem; animation-delay: 1s;"></div>
+        <div class="floating-element accent float" style="bottom: 8rem; right: 1.25rem; width: 7rem; height: 7rem; animation-delay: 3s;"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Experience Timeline</h2>
+                <p class="section-subtitle">
+                    My professional journey through different roles and responsibilities in software development.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <!-- Current Position -->
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="M2 20h20"></path>
+                                <path d="M2 20v-4l8-8-8-8"></path>
+                                <path d="M22 4v16"></path>
+                            </svg>
+                            <div style="flex: 1;">
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Senior Software Engineer</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">Global Data</p>
+                            </div>
+                            <span style="padding: 0.25rem 0.75rem; background: var(--gradient-primary); color: hsl(var(--primary-foreground)); font-size: 0.75rem; font-weight: 600; border-radius: 2rem; animation: pulse 2s infinite;">Current</span>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span class="mono" style="font-weight: 500;">Sep 2025 – Present</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Hyderabad</span>
+                            </div>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Leading frontend development initiatives and architecting scalable web solutions.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Associate Role -->
+                <div class="timeline-item animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="M2 20h20"></path>
+                                <path d="M2 20v-4l8-8-8-8"></path>
+                                <path d="M22 4v16"></path>
+                            </svg>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Associate</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">CTS Limited</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span class="mono" style="font-weight: 500;">Oct 2022 – Oct 2025</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Hyderabad</span>
+                            </div>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Developed interactive web applications using React.js, Vue.js, and modern frontend technologies. Built role-based applications with complex workflows and API integrations.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Intern Role -->
+                <div class="timeline-item animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="M2 20h20"></path>
+                                <path d="M2 20v-4l8-8-8-8"></path>
+                                <path d="M22 4v16"></path>
+                            </svg>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Intern</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">CTS Limited</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span class="mono" style="font-weight: 500;">Feb 2022 – Aug 2022</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Hyderabad</span>
+                            </div>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Started my journey in web development, learning core technologies and contributing to various projects under senior mentorship.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Stats -->
+            <div class="grid grid-3" style="margin-top: 5rem;">
+                <div class="glass-card animate-fade-in-up" style="padding: 1.5rem; border-radius: 1rem; text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem;" class="gradient-text">3+</div>
+                    <div style="color: hsl(var(--muted-foreground));">Years of Experience</div>
+                </div>
+                <div class="glass-card animate-fade-in-up" style="padding: 1.5rem; border-radius: 1rem; text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem;" class="gradient-text">2</div>
+                    <div style="color: hsl(var(--muted-foreground));">Major Projects Delivered</div>
+                </div>
+                <div class="glass-card animate-fade-in-up" style="padding: 1.5rem; border-radius: 1rem; text-align: center;">
+                    <div style="font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem;" class="gradient-text">2</div>
+                    <div style="color: hsl(var(--muted-foreground));">Microsoft Certifications</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element secondary float" style="top: 5rem; right: 5rem; width: 4rem; height: 4rem; animation-delay: 2s;"></div>
+        <div class="floating-element accent float" style="bottom: 10rem; left: 5rem; width: 5rem; height: 5rem; animation-delay: 4s;"></div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Featured Projects</h2>
+                <p class="section-subtitle">
+                    Showcasing key projects that demonstrate my expertise in building scalable, user-centric web applications.
+                </p>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 4rem;">
+                <!-- NYPA IOT DRONE DATA Project -->
+                <div class="grid grid-2 animate-fade-in-up" style="align-items: center;">
+                    <!-- Project Info -->
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <div style="width: 3rem; height: 3rem; border-radius: 1rem; background: linear-gradient(to right, #3b82f6, #06b6d4); display: flex; align-items: center; justify-content: center;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="m22 21-3-3m0 0a8 8 0 1 1-11.31-11.31 8 8 0 0 1 11.31 11.31z"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--foreground));">NYPA IOT DRONE DATA Phase2</h3>
+                                <p style="color: hsl(var(--primary)); font-weight: 600;">Developer</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="mono" style="font-weight: 500;">Feb 2023 – December 2024</span>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; margin-bottom: 1.5rem;">
+                            Developed a responsive web application using Vue.js, JavaScript, HTML, and CSS with a focus on clean UI design and smooth user interactions. Created role-based interfaces for Chief Pilot, Mission Pilot, and Data Viewer, enhancing usability and navigation.
+                        </p>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">Key Highlights:</h4>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Role-based access control for multiple user types</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Responsive design optimized for all devices</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Intuitive dashboards with visual clarity</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Performance optimization across multiple devices</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">Technologies Used:</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Vue3</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Bootstrap</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">JavaScript</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">HTML</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">CSS</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">JSON</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Git</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Azure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual -->
+                    <div>
+                        <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem; transition: var(--transition-smooth);">
+                            <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, hsl(var(--muted) / 0.2), hsl(var(--muted) / 0.1)); border-radius: 1rem; display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border) / 0.5);">
+                                <div style="text-align: center;">
+                                    <div style="width: 5rem; height: 5rem; border-radius: 1.5rem; background: linear-gradient(to right, #3b82f6, #06b6d4); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: var(--transition-smooth);">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="9" cy="7" r="4"></circle>
+                                            <path d="m22 21-3-3m0 0a8 8 0 1 1-11.31-11.31 8 8 0 0 1 11.31 11.31z"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;" class="gradient-text">NYPA IOT</h4>
+                                    <p style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Interactive Web Application</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adidas SailPoint Project -->
+                <div class="grid grid-2 animate-fade-in-up" style="align-items: center;">
+                    <!-- Project Visual -->
+                    <div>
+                        <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem; transition: var(--transition-smooth);">
+                            <div style="aspect-ratio: 16/9; background: linear-gradient(135deg, hsl(var(--muted) / 0.2), hsl(var(--muted) / 0.1)); border-radius: 1rem; display: flex; align-items: center; justify-content: center; border: 1px solid hsl(var(--border) / 0.5);">
+                                <div style="text-align: center;">
+                                    <div style="width: 5rem; height: 5rem; border-radius: 1.5rem; background: linear-gradient(to right, #8b5cf6, #ec4899); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; transition: var(--transition-smooth);">
+                                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                            <circle cx="12" cy="16" r="1"></circle>
+                                            <path d="m7 11V7a5 5 0 0 1 10 0v4"></path>
+                                        </svg>
+                                    </div>
+                                    <h4 style="font-weight: 600; font-size: 1.125rem; margin-bottom: 0.5rem;" class="gradient-text">Adidas SailPoint</h4>
+                                    <p style="font-size: 0.875rem; color: hsl(var(--muted-foreground));">Interactive Web Application</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Info -->
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <div style="width: 3rem; height: 3rem; border-radius: 1rem; background: linear-gradient(to right, #8b5cf6, #ec4899); display: flex; align-items: center; justify-content: center;">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                    <circle cx="12" cy="16" r="1"></circle>
+                                    <path d="m7 11V7a5 5 0 0 1 10 0v4"></path>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 style="font-size: 1.5rem; font-weight: 700; color: hsl(var(--foreground));">Adidas - SailPoint Development</h3>
+                                <p style="color: hsl(var(--primary)); font-weight: 600;">Developer</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="mono" style="font-weight: 500;">Jan 2025 – July 2025</span>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6; margin-bottom: 1.5rem;">
+                            Built a comprehensive React application with Redux for state management, focusing on account management with multi-step approval workflows and seamless API integrations using Material UI components.
+                        </p>
+
+                        <div style="margin-bottom: 1.5rem;">
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">Key Highlights:</h4>
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Multi-step approval workflow implementation</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Seamless API integration architecture</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>Modern Material UI component system</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; color: hsl(var(--muted-foreground));">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--accent)); margin-top: 0.125rem; flex-shrink: 0;">
+                                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                    </svg>
+                                    <span>State management with Redux patterns</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.75rem;">Technologies Used:</h4>
+                            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">React</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Redux</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Material UI</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">JavaScript</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">HTML</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">CSS</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">JSON</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Git</span>
+                                <span class="skill-badge" style="font-size: 0.875rem; padding: 0.5rem 1rem; border: 1px solid hsl(var(--primary) / 0.3);">Jira</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div style="margin-top: 5rem; text-align: center;">
+                <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem; max-width: 32rem; margin: 0 auto;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" class="gradient-text">
+                        Interested in My Work?
+                    </h3>
+                    <p style="color: hsl(var(--muted-foreground)); margin-bottom: 1.5rem;">
+                        I'm always excited to discuss new projects and opportunities. Let's connect and explore how we can work together.
+                    </p>
+                    <a href="#contact" class="btn btn-primary glow" style="font-size: 1.125rem; padding: 1.5rem 2rem; border-radius: 1rem;">
+                        Get In Touch
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element primary float" style="top: 10rem; left: 2.5rem; width: 6rem; height: 6rem; animation-delay: 1s;"></div>
+        <div class="floating-element secondary float" style="bottom: 5rem; right: 5rem; width: 8rem; height: 8rem; animation-delay: 3s;"></div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Education & Certifications</h2>
+                <p class="section-subtitle">
+                    Academic background and professional certifications that form the foundation of my technical expertise.
+                </p>
+            </div>
+
+            <div class="timeline">
+                <!-- B.Tech Degree -->
+                <div class="timeline-item animate-fade-in-up">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                            </svg>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Bachelor of Technology</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">Madanapalli Institute of Technology and Science</p>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1.5rem; font-size: 0.875rem; color: hsl(var(--muted-foreground));">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                            <span class="mono" style="font-weight: 500;">Graduated 2022</span>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Completed my undergraduate degree in Technology, building a strong foundation in computer science principles and software development practices.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Microsoft Azure Certification -->
+                <div class="timeline-item animate-fade-in-up" style="animation-delay: 0.3s;">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="m9 12 2 2 4-4"></path>
+                                <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path>
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            </svg>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Microsoft Azure Fundamentals</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">Certification AZ-900</p>
+                            </div>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Comprehensive understanding of cloud concepts, Azure services, security, privacy, compliance, and Azure pricing and support.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Microsoft AI Certification -->
+                <div class="timeline-item animate-fade-in-up" style="animation-delay: 0.6s;">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="m9 12 2 2 4-4"></path>
+                                <path d="M21 12c.552 0 1.005-.449.95-.998a10 10 0 0 0-8.953-8.951c-.55-.055-.998.398-.998.95v8a1 1 0 0 0 1 1z"></path>
+                                <path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path>
+                            </svg>
+                            <div>
+                                <h3 style="font-size: 1.25rem; font-weight: 700; color: hsl(var(--foreground));">Microsoft AI Fundamentals</h3>
+                                <p style="font-size: 1.125rem; font-weight: 600; color: hsl(var(--secondary));">Certification AI-900</p>
+                            </div>
+                        </div>
+
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.6;">
+                            Foundational knowledge of machine learning and artificial intelligence concepts and related Microsoft Azure services.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element primary float" style="top: 5rem; right: 2.5rem; width: 4rem; height: 4rem; animation-delay: 1s;"></div>
+        <div class="floating-element accent float" style="bottom: 8rem; left: 2.5rem; width: 6rem; height: 6rem; animation-delay: 3s;"></div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title gradient-text">Let's Connect</h2>
+                <p class="section-subtitle">
+                    I'm always excited to discuss new opportunities, collaborate on interesting projects, or just have a chat about technology.
+                </p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Contact Information -->
+                <div class="animate-slide-in-left">
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;" class="gradient-text">
+                            Get In Touch
+                        </h3>
+                        <p style="color: hsl(var(--muted-foreground)); line-height: 1.7; margin-bottom: 2rem;">
+                            Whether you're looking for a developer to join your team, want to collaborate on a project, 
+                            or just want to connect, I'd love to hear from you. Let's build something amazing together!
+                        </p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <!-- Email -->
+                            <a href="mailto:haribandla246@gmail.com" class="contact-method animate-fade-in-up">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                        <path d="m22 2-7 20-4-9-9-4Z"/>
+                                        <path d="M22 2 11 13"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.25rem;">Email</h4>
+                                    <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; margin-bottom: 0.25rem;">Drop me a message anytime</p>
+                                    <p class="mono" style="font-size: 0.875rem; color: hsl(var(--primary));">haribandla246@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:+919490946401" class="contact-method animate-fade-in-up" style="animation-delay: 0.15s;">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.25rem;">Phone</h4>
+                                    <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; margin-bottom: 0.25rem;">Let's have a quick call</p>
+                                    <p class="mono" style="font-size: 0.875rem; color: hsl(var(--primary));">+91 9490946401</p>
+                                </div>
+                            </a>
+
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/bandla-harikrishna" target="_blank" rel="noopener noreferrer" class="contact-method animate-fade-in-up" style="animation-delay: 0.3s;">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                        <path d="m8 6 4-4 4 4"/>
+                                        <path d="m8 6v12"/>
+                                        <path d="m8 18 4 4 4-4"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.25rem;">LinkedIn</h4>
+                                    <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; margin-bottom: 0.25rem;">Connect professionally</p>
+                                    <p class="mono" style="font-size: 0.875rem; color: hsl(var(--primary));">bandla-harikrishna</p>
+                                </div>
+                            </a>
+
+                            <!-- Location -->
+                            <div class="contact-method animate-fade-in-up" style="animation-delay: 0.45s;">
+                                <div class="contact-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h4 style="font-weight: 600; color: hsl(var(--foreground)); margin-bottom: 0.25rem;">Location</h4>
+                                    <p style="color: hsl(var(--muted-foreground)); font-size: 0.875rem; margin-bottom: 0.25rem;">Available for remote/on-site</p>
+                                    <p class="mono" style="font-size: 0.875rem; color: hsl(var(--primary));">Hyderabad, India</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call to Action -->
+                <div class="animate-fade-in-up">
+                    <!-- Quick Actions -->
+                    <div class="glass-card" style="padding: 2rem; border-radius: 1.5rem; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem;" class="gradient-text">
+                            Quick Actions
+                        </h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <button onclick="window.open('mailto:haribandla246@gmail.com', '_blank')" class="btn btn-primary glow" style="width: 100%; padding: 1.5rem; font-size: 1rem; justify-content: center;">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.75rem;">
+                                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                                    <path d="M22 2 11 13"/>
+                                </svg>
+                                Send Email
+                            </button>
+                            
+                            <button onclick="window.open('https://www.linkedin.com/in/bandla-harikrishna', '_blank')" class="btn btn-outline" style="width: 100%; padding: 1.5rem; font-size: 1rem; justify-content: center; border-color: hsl(var(--secondary) / 0.3); color: hsl(var(--secondary));">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.75rem;">
+                                    <path d="m8 6 4-4 4 4"/>
+                                    <path d="m8 6v12"/>
+                                    <path d="m8 18 4 4 4-4"/>
+                                </svg>
+                                Connect on LinkedIn
+                            </button>
+                            
+                            <button onclick="window.open('tel:+919490946401')" class="btn btn-outline" style="width: 100%; padding: 1.5rem; font-size: 1rem; justify-content: center; border-color: hsl(var(--accent) / 0.3); color: hsl(var(--accent));">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.75rem;">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                </svg>
+                                Call Now
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Availability Status -->
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; margin-bottom: 2rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <div style="width: 0.75rem; height: 0.75rem; background: hsl(var(--accent)); border-radius: 50%; animation: pulse 2s infinite;"></div>
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground));">Current Status</h4>
+                        </div>
+                        <p style="color: hsl(var(--muted-foreground));">
+                            <span style="color: hsl(var(--accent)); font-weight: 600;">Available</span> for new opportunities and freelance projects. 
+                            Open to both remote and on-site positions.
+                        </p>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem;">
+                        <div style="display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: hsl(var(--primary));">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                            <h4 style="font-weight: 600; color: hsl(var(--foreground));">Response Time</h4>
+                        </div>
+                        <p style="color: hsl(var(--muted-foreground));">
+                            I typically respond to messages within <span style="color: hsl(var(--primary)); font-weight: 600;">24 hours</span>. 
+                            For urgent matters, feel free to call directly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Message -->
+            <div style="margin-top: 4rem; text-align: center;">
+                <div class="glass-card animate-fade-in-up" style="padding: 2rem; border-radius: 1.5rem; max-width: 48rem; margin: 0 auto;">
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem;" class="gradient-text">
+                        Ready to Start Something Great?
+                    </h3>
+                    <p style="color: hsl(var(--muted-foreground)); line-height: 1.7;">
+                        I believe in the power of collaboration and am always looking forward to working with passionate teams 
+                        and individuals who are excited about building the next big thing in tech.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Background Elements -->
+        <div class="floating-element primary float" style="top: 5rem; left: 2.5rem; width: 8rem; height: 8rem; animation-delay: 1s;"></div>
+        <div class="floating-element secondary float" style="bottom: 10rem; right: 5rem; width: 6rem; height: 6rem; animation-delay: 3s;"></div>
+        <div class="floating-element accent float" style="top: 50%; right: 2.5rem; width: 4rem; height: 4rem; animation-delay: 5s;"></div>
+    </section>
+
+    <script>
+        // Navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const navbar = document.getElementById('navbar');
+            const navToggle = document.getElementById('navToggle');
+            const navLinks = document.getElementById('navLinks');
+            const links = document.querySelectorAll('.nav-link');
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile menu toggle
+            navToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+
+            // Active link highlighting
+            function setActiveLink() {
+                const scrollPosition = window.scrollY + 100;
+                
+                links.forEach(link => {
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        const sectionTop = targetSection.offsetTop;
+                        const sectionBottom = sectionTop + targetSection.offsetHeight;
+                        
+                        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                            links.forEach(l => l.classList.remove('active'));
+                            link.classList.add('active');
+                        }
+                    }
+                });
+            }
+
+            // Set active link on scroll
+            window.addEventListener('scroll', setActiveLink);
+
+            // Close mobile menu when clicking on a link
+            links.forEach(link => {
+                link.addEventListener('click', function() {
+                    navLinks.classList.remove('active');
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Animation on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all animated elements
+            document.querySelectorAll('.animate-fade-in-up, .animate-slide-in-left').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                observer.observe(el);
+            });
+
+            // Add bounce animation to scroll indicator
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes bounce {
+                    0%, 20%, 53%, 80%, 100% {
+                        transform: translate3d(0, 0, 0);
+                    }
+                    40%, 43% {
+                        transform: translate3d(0, -10px, 0);
+                    }
+                    70% {
+                        transform: translate3d(0, -5px, 0);
+                    }
+                    90% {
+                        transform: translate3d(0, -2px, 0);
+                    }
+                }
+                
+                @keyframes pulse {
+                    0% {
+                        opacity: 1;
+                    }
+                    50% {
+                        opacity: 0.5;
+                    }
+                    100% {
+                        opacity: 1;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
